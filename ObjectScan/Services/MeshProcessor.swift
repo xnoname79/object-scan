@@ -38,7 +38,7 @@ class MeshProcessor {
 
         for i in 0..<vertexBuffer.count {
             let vertexPointer = vertexBuffer.buffer.contents()
-                .advanced(by: vertexBuffer.offset + vertexBuffer.stride * i)
+                .advanced(by: vertexBuffer.stride * i)
             let vertex = vertexPointer.assumingMemoryBound(to: SIMD3<Float>.self).pointee
 
             // Transform to world coordinates
@@ -58,7 +58,7 @@ class MeshProcessor {
 
         for i in 0..<faceBuffer.count {
             let facePointer = faceBuffer.buffer.contents()
-                .advanced(by: faceBuffer.offset + faceBuffer.indexCountPerPrimitive * faceBuffer.bytesPerIndex * i)
+                .advanced(by: faceBuffer.indexCountPerPrimitive * faceBuffer.bytesPerIndex * i)
 
             for j in 0..<faceBuffer.indexCountPerPrimitive {
                 let indexPointer = facePointer.advanced(by: j * faceBuffer.bytesPerIndex)

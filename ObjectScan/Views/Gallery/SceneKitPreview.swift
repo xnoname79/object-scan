@@ -35,7 +35,8 @@ struct SceneKitPreview: UIViewRepresentable {
     func updateUIView(_ uiView: SCNView, context: Context) {}
 
     private func loadMesh(url: URL, into scene: SCNScene) {
-        let asset = MDLAsset(url: url)
+        let allocator = MDLMeshBufferDataAllocator()
+        let asset = MDLAsset(url: url, vertexDescriptor: nil, bufferAllocator: allocator)
         asset.loadTextures()
 
         for i in 0..<asset.count {
