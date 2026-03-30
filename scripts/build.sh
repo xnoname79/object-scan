@@ -22,9 +22,9 @@ xcodebuild archive \
     -archivePath "$ARCHIVE_PATH" \
     -destination "generic/platform=iOS" \
     -configuration Release \
+    -allowProvisioningUpdates \
     DEVELOPMENT_TEAM="73G9VJKFH2" \
-    CODE_SIGN_STYLE=Automatic \
-    | tail -20
+    CODE_SIGN_STYLE=Automatic
 
 echo ""
 
@@ -34,7 +34,7 @@ xcodebuild -exportArchive \
     -archivePath "$ARCHIVE_PATH" \
     -exportPath "$EXPORT_PATH" \
     -exportOptionsPlist ExportOptions.plist \
-    | tail -10
+    -allowProvisioningUpdates
 
 echo ""
 echo "=== Build complete ==="

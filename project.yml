@@ -10,7 +10,9 @@ targets:
     type: application
     platform: iOS
     sources:
-      - ObjectScan
+      - path: ObjectScan
+        excludes:
+          - Resources
     settings:
       base:
         INFOPLIST_FILE: ObjectScan/Info.plist
@@ -23,6 +25,7 @@ targets:
         CODE_SIGN_IDENTITY: "Apple Development"
         TARGETED_DEVICE_FAMILY: "1"
         SUPPORTS_MACCATALYST: false
+        ALWAYS_SEARCH_USER_PATHS: false
       configs:
         Debug:
           DEBUG_INFORMATION_FORMAT: dwarf
@@ -31,4 +34,5 @@ targets:
           DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
           SWIFT_COMPILATION_MODE: wholemodule
     resources:
-      - ObjectScan/Resources
+      - path: ObjectScan/Resources
+        buildPhase: resources
